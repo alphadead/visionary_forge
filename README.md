@@ -1,4 +1,4 @@
-Open Innovation Platform
+Visionary Forge
 This is a Flutter application for open innovation that brings together diverse stakeholders from industry, government, and academia to collaborate and co-create solutions to pressing societal challenges. The platform facilitates idea generation, collaboration, and project management, and provides resources for participants such as funding and networking opportunities. Additionally, the platform includes mechanisms for measuring and demonstrating the impact of the solutions developed, and has a transparent governance structure that promotes inclusivity and equity.
 
 #Features
