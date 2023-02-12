@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:visionary_forge/home.dart';
 import 'package:visionary_forge/profileScreen.dart';
 
 class EditProfileScreen extends StatefulWidget {
@@ -47,6 +48,7 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
     User? auth = FirebaseAuth.instance.currentUser;
 
     return Scaffold(
+      backgroundColor: bkGnd,
       appBar: AppBar(
         title: const Text('Edit Profile'),
       ),
@@ -76,6 +78,7 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                 width: double.infinity,
                 padding: const EdgeInsets.all(16),
                 child: ElevatedButton(
+                  style: ElevatedButton.styleFrom(backgroundColor: buttonCol),
                   onPressed: () {
                     if (_formKey.currentState!.validate()) {
                       // Update the user's profile information

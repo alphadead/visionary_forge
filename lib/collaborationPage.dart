@@ -1,6 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:visionary_forge/home.dart';
 
 class IdeaCollaborationScreen extends StatefulWidget {
   final String? ideaId;
@@ -14,12 +15,14 @@ class IdeaCollaborationScreen extends StatefulWidget {
 class _IdeaCollaborationScreenState extends State<IdeaCollaborationScreen> {
   final _chatController = TextEditingController();
   final _discussionController = TextEditingController();
+  final _chatContactController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
     User? auth = FirebaseAuth.instance.currentUser;
 
     return Scaffold(
+      backgroundColor: bkGnd,
       appBar: AppBar(
         title: const Text('Collaborate on Idea'),
       ),
@@ -75,12 +78,13 @@ class _IdeaCollaborationScreenState extends State<IdeaCollaborationScreen> {
               child: TextField(
                 controller: _chatController,
                 decoration: const InputDecoration(
-                  hintText: 'Type a message',
+                  hintText: 'Type a reason for collaboration',
                 ),
               ),
             ),
             Container(
               child: ElevatedButton(
+                style: ElevatedButton.styleFrom(backgroundColor: buttonCol),
                 onPressed: () {
                   FirebaseFirestore.instance
                       .collection('Ideas')
@@ -106,7 +110,17 @@ class _IdeaCollaborationScreenState extends State<IdeaCollaborationScreen> {
               ),
             ),
             Container(
+              padding: const EdgeInsets.all(10),
+              child: TextField(
+                controller: _chatContactController,
+                decoration: const InputDecoration(
+                  hintText: 'Your Linkedin/Contact',
+                ),
+              ),
+            ),
+            Container(
               child: ElevatedButton(
+                style: ElevatedButton.styleFrom(backgroundColor: buttonCol),
                 onPressed: () {
                   FirebaseFirestore.instance
                       .collection('Ideas')
@@ -115,6 +129,8 @@ class _IdeaCollaborationScreenState extends State<IdeaCollaborationScreen> {
                       .add({
                     'message': _discussionController.text,
                     'timestamp': Timestamp.now(),
+                    'contact': _chatContactController.text,
+                    'approved': false,
                     'userId': auth!.uid,
                   });
                   _discussionController.clear();

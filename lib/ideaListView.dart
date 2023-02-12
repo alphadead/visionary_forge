@@ -2,6 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:visionary_forge/collaborationPage.dart';
+import 'package:visionary_forge/home.dart';
 
 final FirebaseFirestore _db = FirebaseFirestore.instance;
 
@@ -13,6 +14,10 @@ class IdeaListView extends StatelessWidget {
     User? auth = FirebaseAuth.instance.currentUser;
 
     return Scaffold(
+      backgroundColor: bkGnd,
+      appBar: AppBar(
+        title: const Text("Idea View"),
+      ),
       body: SizedBox(
         height: 500,
         child: StreamBuilder(
@@ -24,23 +29,26 @@ class IdeaListView extends StatelessWidget {
                     itemBuilder: (context, index) {
                       DocumentSnapshot item = snapshot.data!.docs[index];
                       if (item['authorId'] != auth!.uid) {
-                        return ListTile(
-                          title: Text(item['title']),
-                          subtitle: Text(item['desc']),
-                          onTap: () {
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                builder: (context) =>
-                                    IdeaDetailView(idea: item),
-                              ),
-                            );
-                          },
+                        return Card(
+                          child: ListTile(
+                            title: Text(item['title']),
+                            subtitle: Text(item['desc']),
+                            onTap: () {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) =>
+                                      IdeaDetailView(idea: item),
+                                ),
+                              );
+                            },
+                          ),
                         );
+                      } else {
+                        return Container();
                       }
-                      return const CircularProgressIndicator();
                     })
-                : const Text('Please Wait');
+                : const Text('No Idea existing, Add your!');
           },
         ),
       ),
@@ -56,6 +64,7 @@ class IdeaDetailView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: bkGnd,
       floatingActionButton: FloatingActionButton(
         onPressed: () {
           Navigator.push(
@@ -75,11 +84,13 @@ class IdeaDetailView extends StatelessWidget {
         padding: const EdgeInsets.all(16.0),
         child: Column(
           children: <Widget>[
+            Card(
+              child: ListTile(
+                title: Text('Votes: ${idea!['title']}'),
+                subtitle: Text('Description: ${idea!['desc']}'),
+              ),
+            ),
             Text('Author: ${idea!['author']}'),
-            const SizedBox(height: 16.0),
-            Text('Description: ${idea!['desc']}'),
-            const SizedBox(height: 16.0),
-            Text('Votes: ${idea!['title']}'),
           ],
         ),
       ),

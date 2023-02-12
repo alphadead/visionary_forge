@@ -1,6 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:visionary_forge/home.dart';
 
 class IdeaGenerationPage extends StatefulWidget {
   @override
@@ -94,6 +95,7 @@ class _IdeaGenerationPageState extends State<IdeaGenerationPage> {
                 },
               ),
               ElevatedButton(
+                style: ElevatedButton.styleFrom(backgroundColor: buttonCol),
                 child: const Text("Submit Idea"),
                 onPressed: () {
                   if (_formKey.currentState!.validate()) {

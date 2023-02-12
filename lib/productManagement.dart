@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:visionary_forge/home.dart';
 
 class ProjectManagementPage extends StatefulWidget {
   @override
@@ -17,7 +18,9 @@ class _ProjectManagementPageState extends State<ProjectManagementPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: bkGnd,
       appBar: AppBar(
+        backgroundColor: buttonCol,
         title: const Text("Project Management"),
       ),
       body: Form(
@@ -81,6 +84,7 @@ class _ProjectManagementPageState extends State<ProjectManagementPage> {
               ),
               const SizedBox(height: 16.0),
               ElevatedButton(
+                style: ElevatedButton.styleFrom(backgroundColor: buttonCol),
                 child: const Text("Save"),
                 onPressed: () {
                   if (_formKey.currentState!.validate()) {

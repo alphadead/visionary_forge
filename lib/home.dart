@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:visionary_forge/ideaGeneration.dart';
 import 'package:visionary_forge/ideaListView.dart';
+import 'package:visionary_forge/news.dart';
+import 'package:visionary_forge/newsNetwork.dart';
 import 'package:visionary_forge/profileScreen.dart';
 
 Color buttonCol = const Color.fromRGBO(246, 148, 110, 1);
@@ -83,6 +85,48 @@ class HomePage extends StatelessWidget {
                       );
                     },
                     child: const Text('Want to help an idea grow?'),
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      SizedBox(
+                        width: 120,
+                        child: ElevatedButton(
+                          style: ElevatedButton.styleFrom(
+                              backgroundColor:
+                                  const Color.fromRGBO(246, 148, 110, 1)),
+                          onPressed: () {
+                            Navigator.of(context).push(
+                              MaterialPageRoute(
+                                builder: (BuildContext context) => NewsScreen(),
+                              ),
+                            );
+                          },
+                          child: const Text(
+                              'Want to know about Funding/Investment?'),
+                        ),
+                      ),
+                      const SizedBox(
+                        width: 50,
+                      ),
+                      SizedBox(
+                        width: 120,
+                        child: ElevatedButton(
+                          style: ElevatedButton.styleFrom(
+                              backgroundColor:
+                                  const Color.fromRGBO(246, 148, 110, 1)),
+                          onPressed: () {
+                            Navigator.of(context).push(
+                              MaterialPageRoute(
+                                builder: (BuildContext context) =>
+                                    NetworkNews(),
+                              ),
+                            );
+                          },
+                          child: const Text('Want to know about Networking?'),
+                        ),
+                      ),
+                    ],
                   ),
                 ],
               ),
