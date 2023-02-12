@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "644796275643",
+    "project_id": "visionaryforge",
+    "storage_bucket": "visionaryforge.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:644796275643:android:d339ff547651640436029e",
+        "android_client_info": {
+          "package_name": "com.example.visionary_forge"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "644796275643-buhdr4njm6k7n5ep7243fabe934tosmp.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDTzRc9_sdbq1xn3WRQAhaBm8th6QBC2k4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "644796275643-buhdr4njm6k7n5ep7243fabe934tosmp.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
